@@ -38,13 +38,13 @@ class Panel:
         
     async def add(self, emote, role, init=False):
         self.emotes[emote] = [role]
-        await self.message.add_reaction(emote)
         
         self.emotes[emote].append(EventHandler.reaction_add_list.append(self.on_reaction_add, message_id=self.message.id, member_id=Anything, emoji=emote))
         self.emotes[emote].append(EventHandler.reaction_remove_list.append(self.on_reaction_remove, message_id=self.message.id, member_id=Anything, emoji=emote))
         
         if not init:
             await self._edit_message()
+            await self.message.add_reaction(emote)
             self.bot.database.insert('roles', {'panel_id': self.message.id, 'emote': f"'{emote}'", 'role_id': role.id})
         
     async def remove(self, emote):
