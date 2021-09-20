@@ -1,0 +1,11 @@
+aiohttp==3.7.4.post0
+async-timeout==3.0.1
+attrs==21.2.0
+chardet==4.0.0
+-e git+https://github.com/Rapptz/discord.py@b8898c7788b7d0b5d2a129912b1e14df87aed0f0#egg=discord.py
+idna==3.2
+multidict==5.1.0
+mysql-connector-python==8.0.26
+protobuf==3.18.0
+typing-extensions==3.10.0.2
+yarl==1.6.3
