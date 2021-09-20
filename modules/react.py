@@ -84,7 +84,7 @@ class React:
             self.panels[message.id].load(title, footer)
             self.panels[message.id].event = EventHandler.message_delete_list.append(self.on_panel_deleted, message_id=message.id)
             
-            for emotes_data in self.bot.database.select('roles', ['emote', 'role_id'], f'(panel_id=\'{panel_id}\')'):
+            for emotes_data in self.bot.database.select('roles', ['emote', 'role_id'], True, f'(panel_id=\'{panel_id}\')'):
                 emote, role_id = emotes_data.values()
                 role = guild.get_role(role_id)
                 await self.panels[message.id].add(emote, role, True)
